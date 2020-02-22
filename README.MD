@@ -1,5 +1,5 @@
 # AnimeListExporter
-With this tool you can export your lists (anime, manga) from Anilist to the XML-file-format from MAL. The generated files can be imported in MAL or Anilist.
+With this unofficial tool you can export your lists (anime, manga) from Anilist to the XML-file-format from MAL. The generated files can be imported in MAL or Anilist.
 
 ## Notes
 As of yet (february 2020) MAL does not offer the possibility to import a manga-list.
