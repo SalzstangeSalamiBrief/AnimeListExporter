@@ -5,7 +5,7 @@
  */
 function calcNewStatus(status, listType = 'anime') {
   let newStatus = '';
-  switch (status) {
+  switch (status.toUpperCase()) {
     case 'PAUSED':
       newStatus = 'On-Hold';
       break;
@@ -124,4 +124,5 @@ module.exports = {
   transformAnimeData,
   transformUserData,
   transformMangaData,
+  calcNewStatus,
 };

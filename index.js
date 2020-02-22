@@ -1,7 +1,7 @@
 
 const commander = require('commander');
-const { parseArgs } = require('./helpers/argParser');
-const { generateAndWriteListData } = require('./helpers/fileWriter');
+const { parseArgs } = require('./util/argParser');
+const { generateAndWriteListData } = require('./util/fileWriter');
 // config commander
 commander
   .option('-u, --username <username>', 'Username you want to fetch lists for')
