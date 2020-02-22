@@ -26,7 +26,7 @@ function parseArgs({ username = '', lists = '', help = undefined }) {
   /*
   Parse the input for lists
   if lists is a String with length greater than 0 parse the string
-  else lists is not specified and return default ['ANIME', 'MANGA']
+  else lists is not specified and return default ['ANIME']
   */
   const listsToCreate = [];
   if (lists.length > 0) {
@@ -48,7 +48,6 @@ function parseArgs({ username = '', lists = '', help = undefined }) {
     });
   } else {
     listsToCreate.push('ANIME');
-    listsToCreate.push('MANGA');
   }
   return {
     username,

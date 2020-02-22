@@ -32,8 +32,6 @@ function transformAnimeData({
   status,
   media: { idMal, title: { romaji } },
   progress,
-  startedAt,
-  completedAt,
   score,
   notes,
   repeat,
@@ -48,8 +46,8 @@ function transformAnimeData({
         <series_episodes>${progress}</series_episodes>
         <my_id>123456</my_id>
         <my_watched_episodes>${progress}</my_watched_episodes>
-        <my_start_date>${startedAt || '0000-00-00'}</my_start_date>
-        <my_finish_date>${completedAt || '0000-00-00'}</my_finish_date>
+        <my_start_date>0000-00-00</my_start_date>
+        <my_finish_date>0000-00-00</my_finish_date>
         <my_rated></my_rated>
         <my_score>${score}</my_score>
         <my_dvd></my_dvd>
@@ -90,7 +88,7 @@ function transformMangaData({
     <my_storage></my_storage>
     <my_status>${newStatus}</my_status>
     <my_comments><![CDATA[]]></my_comments>
-    <my_times_read>${repeat}</my_times_read>
+    <my_times_read>${repeat >= 0 ? repeat : ''}</my_times_read>
     <my_tags><![CDATA[]]></my_tags>
     <my_reread_value></my_reread_value>
     <update_on_import>1</update_on_import>

@@ -4,6 +4,16 @@ const { getLists } = require('./apiRequests');
 const { transformAnimeData, transformUserData, transformMangaData } = require('./dataTransformer');
 
 /**
+ * function which calcs the actual date and returns a string
+ * return: dd_hh_yyyy-hh_mm_ss
+ */
+function calcDate() {
+  const actualDate = (new Date()).toLocaleString('en-GB', { timeZone: 'UTC' }).split(',');
+  return `${actualDate[0].split('/').join('_')}-${actualDate[1].trim().split(' ').shift().split(':')
+    .join('_')}`;
+}
+
+/**
  * Function which aggregate corresponding data into one list
  */
 async function generateListData({ username, listsToCreate = [] }) {
@@ -41,13 +51,11 @@ async function generateAndWriteListData(args, username) {
   const listData = await generateListData(args);
   Object.keys(listData).forEach((key) => {
     // create a writeable stream
-    const actualDate = (new Date()).toLocaleString('en-GB', { timeZone: 'UTC' }).split(',');
     const filePath = path.join(
       __dirname,
       '../',
       '/output_files',
-      `${key}--${actualDate[0].split('/').join('_')}-${actualDate[1].trim().split(' ').shift().split(':')
-        .join('_')}.xml`,
+      `${key}--${calcDate()}.xml`,
     );
     const writeStream = fs.createWriteStream(filePath);
     // write metadata
@@ -74,10 +82,10 @@ async function generateAndWriteListData(args, username) {
 
     // loop through each listData entrie. For each Entrie create a String with transformAnimeData and write the result through the stream
     listData[key].forEach(({ entries }) => {
-      entries.forEach((entry) => {
-        const entryData = key.toLowerCase() === 'anime' ? transformAnimeData(entry) : transformMangaData(entry);
-        writeStream.write(entryData);
-      });
+      const transformFunction = key.toLowerCase() === 'anime' ? transformAnimeData : transformMangaData;
+      for (let i = 0; i < entries.length; i += 1) {
+        writeStream.write(transformFunction(entries[i]));
+      }
     });
     // close envelope
     writeStream.write('\n</myanimelist>');
