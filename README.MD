@@ -1,12 +1,11 @@
-TODOS:
-- Unit-tests
-- What is this about
-- Instruction
-  - Installation
-  - Usage
+# AnimeListExporter
+With this tool you can export your lists (anime, manga) from Anilist to the XML-file-format from MAL. The generated Files can be imported in MAL or Anilist.
+
+## Notes
+Actually (february 2020) you can only import anime-lists in MAL.
 
 ## Requirements
-- NodeJS > 12
+- NodeJS >= 12
 
 ## Installation
 ```bash
@@ -21,7 +20,7 @@ TODOS:
 
 ## Usage
 ```bash
-  # run the application
+  # run the tool
   $ node index -u Username -l Lists
 ```
 - -u Username: Replace Username with the name of the user you want to generate lists
