@@ -36,7 +36,6 @@ async function generateListData({ username, listsToCreate = [] }) {
     return lists;
   } catch (error) {
     console.error(error);
-    // todo handle error
     throw error;
   }
 }

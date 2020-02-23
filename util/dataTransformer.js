@@ -70,7 +70,6 @@ function transformAnimeData({
 function transformMangaData({
   media: { idMal, title: { romaji } }, score, status, repeat, progress,
 }) {
-  // todo volumes chapters, userid
   const newStatus = calcNewStatus(status, 'manga');
   return `
   <manga>
@@ -104,7 +103,6 @@ function transformUserData({
 }) {
   const typeInLowerCase = type.toLowerCase();
   const isTypeAnime = typeInLowerCase === 'anime';
-  // todo maybe userid
   return `
     <myinfo>
       <user_id>123456</user_id>

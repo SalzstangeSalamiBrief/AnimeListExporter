@@ -16,5 +16,3 @@ const parsedArgs = parseArgs({ username, lists, help });
 if (!parsedArgs.help) {
   generateAndWriteListData(parsedArgs, parsedArgs.username);
 }
-
-// TODO: test if fetched list is empty
