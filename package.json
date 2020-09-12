@@ -10,7 +10,7 @@
   "license": "GNU GPLv3 ",
   "dependencies": {
     "commander": "^5.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "eslint": "^7.3.0",
