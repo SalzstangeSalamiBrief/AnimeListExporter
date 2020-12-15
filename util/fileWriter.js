@@ -9,7 +9,7 @@ const { transformAnimeData, transformUserData, transformMangaData } = require('.
  */
 function calcDate() {
   const actualDate = (new Date()).toLocaleString('en-GB', { timeZone: 'UTC' }).split(',');
-  return `${actualDate[0].split('/').reverse().join('_')}--${actualDate[1].trim().split(' ').shift().split(':')
+  return `${actualDate[0].split('/').join('-')}__${actualDate[1].trim().split(' ').shift().split(':')
     .join('_')}`;
 }
 
