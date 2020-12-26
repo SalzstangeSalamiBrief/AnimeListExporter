@@ -48,7 +48,7 @@ function parseArgs({ username = '', lists = '', help = undefined }) {
   }
   // check if username is specified
   if (username === '') {
-    printError(0);
+    return printError(0);
   }
   /*
   Parse the input for lists
