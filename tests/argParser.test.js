@@ -11,12 +11,12 @@ describe('check for username as an argument', () => {
 
   test('pass nothing', () => {
     const returnValue = parseArgs({});
-    expect(returnValue).toEqual(undefined);
+    expect(returnValue).toBeFalsy();
   });
 
   test('pass empty string', () => {
     const returnValue = parseArgs({ username: '' });
-    expect(returnValue).toEqual(undefined);
+    expect(returnValue).toBeFalsy();
   });
 });
 
@@ -82,8 +82,8 @@ describe('test for help-flag', () => {
     expect(result).toBeUndefined();
   });
 
-  test('help is a random number', () => {
-    const result = parseArgs({ username: validUsername, lists: 'ANIME', help: Math.ceil(Math.random() * 999) });
+  test('help is falsy', () => {
+    const result = parseArgs({ username: validUsername, lists: 'ANIME', help: false });
     expect(result).toBeDefined();
   });
 });

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { getLists } = require('./apiRequests');
+const { getList } = require('./apiRequests');
 const { transformAnimeData, transformUserData, transformMangaData } = require('./dataTransformer');
 
 /**
@@ -24,11 +24,11 @@ async function generateListData({ username, listsToCreate = [] }) {
       return acc;
     },
     {});
+
     const listKeys = Object.keys(lists);
-    // create an array and push promises into it.
-    const promisesArray = listKeys.map((key) => getLists(username, key));
-    // wait for all promises
+    const promisesArray = listKeys.map((key) => getList(username, key));
     const listResponses = await Promise.all(promisesArray);
+
     // concat promisesArray with lists
     listKeys.forEach((key, index) => {
       lists[key] = listResponses[index];

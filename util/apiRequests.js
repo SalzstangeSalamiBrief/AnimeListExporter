@@ -33,7 +33,7 @@ query ($username: String, $type: MediaType) {
  * @param {String} username
  * @param {String} type
  */
-async function getLists(username = '', type = 'ANIME') {
+async function getList(username = '', type = 'ANIME') {
   const variables = {
     username,
     type,
@@ -48,18 +48,16 @@ async function getLists(username = '', type = 'ANIME') {
     body: JSON.stringify({ query, variables }),
   };
   try {
-    const {
-      data: {
-        MediaListCollection: { lists },
-      },
-    } = await (await fetch(url, options)).json();
-    return lists;
+    const {data : {MediaListCollection}} = await (await fetch(url, options)).json();
+    if(MediaListCollection){
+      return MediaListCollection.lists;
+    }
   } catch (error) {
     console.error(error);
-    return [];
   }
+  return [];
 }
 
 module.exports = {
-  getLists,
+  getList,
 };
